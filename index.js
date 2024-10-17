@@ -1,7 +1,7 @@
 // counter app
 function init(){
     counts_str = localStorage.getItem("count")
-    count = counts_str
+    count = counts_str ? parse_latest_count() :  0
     display()
 }
 function increment(){
@@ -17,6 +17,13 @@ function save(){
     localStorage.setItem("count", counts_str)
     display()
 }
+function clr(){
+    localStorage.removeItem("count")
+    counts_str = ""
+    count = 0
+    display()
+}
 function parse_latest_count(){
-    counts_str 
+    count_arr = counts_str.split(" - ")
+    return count_arr[count_arr.length - 1]
 }
